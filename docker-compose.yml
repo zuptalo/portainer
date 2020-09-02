@@ -2,12 +2,12 @@ version: "3.8"
 
 volumes:
   portainer-data:
-    name: "ubuntu-portainer-data"
+    name: "portainer-data"
 
 services:
   portainer:
     container_name: portainer
-    image: portainer:2.0.0
+    image: zuptalo/portainer:latest
     restart: always
     ports:
       - 9000:9000

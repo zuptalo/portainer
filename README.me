@@ -1,0 +1,28 @@
+# Portainer 2.0.0 with support for Kubernetes
+
+#### If you want to connect to the docker running on your local machine:
+docker run -p 9000:9000 -p 8000:8000 -v "/var/run/docker.sock:/var/run/docker.sock" -d zuptalo/portainer
+
+---
+
+#### You can also use the following docker-compose.yml to make things even easier:
+
+<pre><code>
+version: "3.8"
+
+volumes:
+  portainer-data:
+    name: "portainer-data"
+
+services:
+  portainer:
+    container_name: portainer
+    image: zuptalo/portainer:latest
+    restart: always
+    ports:
+      - 9000:9000
+      - 8000:8000
+    volumes:
+      - portainer-data:/data/
+      - /var/run/docker.sock:/var/run/docker.sock
+<code><pre>
